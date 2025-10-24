@@ -1,0 +1,289 @@
+<html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>My First Webpage</title>
+   <style>
+     /* --- Layout --- */
+     /* Reset default margins and paddings */
+     html,
+     body {
+      
+       height: 100%;
+       margin: 0;
+       padding: 0;
+       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+       background: #f2f4fc;
+       color: #333;
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+       align-items: center;
+       overflow: hidden;
+     }
+
+
+     header {
+       background: #1d2c78;
+       color: white;
+       width: 100%;
+       text-align: center;
+       padding: 10px 0;
+     }
+
+
+     main {
+       flex: 1;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       text-align: center;
+       width: 90%;
+       max-width: 750px;
+       background: white;
+       border-radius: 12px;
+       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+       padding: 20px;
+     }
+
+
+     footer {
+       background: #1d2c78;
+       color: white;
+       width: 100%;
+       text-align: center;
+       padding: 8px 0;
+       font-size: 13px;
+     }
+
+
+     /* --- Content --- */
+     h1 {
+       margin: 10px 0;
+       font-size: 20px;
+     }
+
+
+     h2 {
+       color: #1d2c78;
+       margin-top: 15px;
+       margin-bottom: 8px;
+       font-size: 16px;
+     }
+
+
+     p {
+       font-size: 14px;
+       margin: 6px 0;
+       max-width: 600px;
+     }
+
+
+     img {
+       width: 120px;
+       height: 120px;
+       border-radius: 50%;
+       border: 3px solid #1d2c78;
+       margin: 10px 0;
+       object-fit: cover;
+     }
+
+
+     ul {
+       list-style-type: disc;
+       padding-left: 0;
+       margin: 8px 0;
+       font-size: 14px;
+     }
+
+
+     table {
+       width: 80%;
+       border-collapse: collapse;
+       margin: 8px auto;
+       font-size: 13px;
+     }
+
+
+     th,
+     td {
+       border: 1px solid #ccc;
+       padding: 6px;
+     }
+
+
+     th {
+       background: #e5e9f7;
+     }
+
+
+     /* --- Buttons --- */
+     .button-row {
+       margin-top: 10px;
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: center;
+       gap: 8px;
+     }
+
+
+     button {
+       background: #1d2c78;
+       color: white;
+       border: none;
+       border-radius: 6px;
+       padding: 6px 12px;
+       cursor: pointer;
+       transition: background 0.3s ease;
+       font-size: 13px;
+     }
+
+
+     button:hover {
+       background: #0078ff;
+     }
+
+
+     /* --- Dark Theme --- */
+     .dark-mode {
+       background: #121212;
+       color: #eee;
+     }
+
+
+     .dark-mode main {
+       background: #1e1e1e;
+       color: #ddd;
+     }
+
+
+     .dark-mode header,
+     .dark-mode footer {
+       background: #0a0a0a;
+     }
+
+
+     .dark-mode th {
+       background: #222;
+     }
+
+
+     /* Make sure everything fits even on small laptop screens */
+     @media (max-height: 750px) {
+       img {
+         width: 90px;
+         height: 90px;
+       }
+       p,
+       li,
+       td,
+       th {
+         font-size: 13px;
+       }
+     }
+   </style>
+ </head>
+
+
+ <body>
+   <header>
+     <h1 id="pageTitle">Welcome to My Webpage</h1>
+   </header>
+
+
+   <main>
+     <h2>About Me</h2>
+     <p id="aboutText">
+       Hello! My name is Alex and I'm learning how to build websites using
+       HTML, CSS, and JavaScript.
+     </p>
+
+
+     <img
+       id="profilePic"
+       src="https://www.w3schools.com/images/lamp.jpg"
+       alt="Profile picture"
+     />
+
+
+     <h2>My Hobbies</h2>
+     <ul id="hobbyList">
+       <li>Playing Basketball</li>
+       <li>Coding Projects</li>
+       <li>Watching Science Videos</li>
+     </ul>
+
+
+     <h2>Study Timetable</h2>
+     <table>
+       <tr>
+         <th>Day</th>
+         <th>Subject</th>
+         <th>Time</th>
+       </tr>
+       <tr>
+         <td>Mon</td>
+         <td>Maths</td>
+         <td>4–5 PM</td>
+       </tr>
+       <tr>
+         <td>Tue</td>
+         <td>Science</td>
+         <td>4–5 PM</td>
+       </tr>
+       <tr>
+         <td>Wed</td>
+         <td>English</td>
+         <td>4–5 PM</td>
+       </tr>
+     </table>
+
+
+     <div class="button-row">
+       <button onclick="changeHeading()">Change Heading</button>
+       <button onclick="toggleHobbies()">Hide/Show Hobbies</button>
+       <button onclick="toggleTheme()">Toggle Theme</button>
+       <button onclick="changeImage()">Change Image</button>
+     </div>
+   </main>
+
+
+   <footer>
+     <p>Created by Alex | 2025</p>
+   </footer>
+
+
+   <script>
+     const heading = document.getElementById("pageTitle");
+     const hobbyList = document.getElementById("hobbyList");
+     const body = document.body;
+     const img = document.getElementById("profilePic");
+
+
+     function changeHeading() {
+       heading.textContent = heading.textContent.includes("Awesome")
+         ? "Welcome to My Webpage"
+         : "Welcome to My Awesome Webpage!";
+     }
+
+
+     function toggleHobbies() {
+       hobbyList.style.display =
+         hobbyList.style.display === "none" ? "block" : "none";
+     }
+
+
+     function toggleTheme() {
+       body.classList.toggle("dark-mode");
+     }
+
+
+     function changeImage() {
+       img.src = img.src.includes("lamp.jpg")
+         ? "https://placekitten.com/200/200"
+         : "https://www.w3schools.com/images/lamp.jpg";
+     }
+   </script>
+ </body>
+</html>
